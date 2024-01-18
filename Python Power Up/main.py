@@ -44,7 +44,35 @@ import pandas as pd
 import pyautogui
 import time
 
+# É bom definir essas variáveis logo no início para que caso essas informações mudassem em um futuro simplesmente só mudar em um único ponto
+link = "https://dlp.hashtagtreinamentos.com/python/intensivao/login"
+email = "emailqualquer@email.com"
+senha = "senha_qualquer"
+
 # Importando base de dados como "tabela"
 tabela = pd.read_csv(r"C:\Users\Danie\OneDrive\Documentos\MeusProjetos\Jornada-Python\Python Power Up\produtos.csv")
 # print(tabela) # Imprimir a tabela para saber como ela está formatada
+
+pyautogui.PAUSE = 1 # dá um pause de 1 segundo a cada linha de código
+
+pyautogui.press("win") 
+pyautogui.write("chrome")
+pyautogui.press("enter")
+
+# agora dependendo do computador vai abrir ou não o crhome direto, no meu abre a seleção de perfis do chrome, então, irei pegar a posição em que o perfil que quero seja selecionado e então abrir o servidor
+
+pyautogui.click(x=733, y=620)
+pyautogui.write(link)
+pyautogui.press("enter")
+
+# já no site devemos selecionar a caixa de email para preencher os dados de entrada
+
+pyautogui.click(x=689, y=513)
+pyautogui.write(email)
+pyautogui.press("tab")
+pyautogui.write(senha)
+pyautogui.press("tab")
+pyautogui.press("enter")
+
+# Já logado no servidor, devemos fazer os mesmos procedimentos para selecionar a primeira entrada
 
