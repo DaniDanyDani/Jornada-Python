@@ -20,6 +20,13 @@
         Pyautogui.position() – Serve para pegar a posição em que o mouse se encontra
 
     passo 4: Cadastrar produto por produto
-        
+
 
 '''
+
+import pandas as pd
+import pyautogui
+import time
+
+tabela = pd.read_csv("produtos.csv")
+print(tabela)
