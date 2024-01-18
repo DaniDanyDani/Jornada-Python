@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt - br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js" integrity="sha512-tE1z+95+lMCGwy+9PnKgUSIeHhvioC9lMlI7rLWU0Ps3XTdjRygLcy4mLuL0JAoK4TLdQEyP0yOl/9dMOqpH/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function {
+            var socket = io("localhost:5000")
+            socket.on("connect", function() {
+                console.log("conectou");
+            });
+
+            socket.on("message", function(data) {
+                console.log("enviou mensagem");
+                $("#lista_mensagens").append($('<p>').text(data));
+            });
+
+            $("#botao").on('click', function() {
+                console.log("clicou botao");
+                socket.send($('#usuario').val() + ": " + $('#mensagem').val());
+                $('#mensagem').val('');
+            });
+        })
+
+    </script>
+
+    <div id="lista_mensagens">
+
+    </div>
+    <input type="text" id="usuario" placeholder="Usuario" required>
+    <input type="text" id="mensagem" placeholder="Mensagem" required>
+    <button id="botao">Enviar</button>
+    
+</body>
+</html>
