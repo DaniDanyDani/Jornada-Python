@@ -1,11 +1,10 @@
-from flask import Flask, render_template # Estruturas para criar o site
-from flask_socketio import SocketIO, send # estruturas para criar o chat
-
-chave_seguranca = "dinx0ej23mrce-0,mrx0-2,r-029,0@#$%¨&*()"
+from flask import Flask, render_template
+from flask_socketio import SocketIO, send
+import os
 
 app = Flask(__name__)
-app.config["SECRET"] = chave_seguranca
-app.config["DEBUG"] = True
+app.config["SECRET_KEY"] = "dinx0ej23mrce-0,mrx0-2,r-029,0@#$%¨&*()"
+app.debug = True  # Adicionando modo de depuração
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 @socketio.on("message")
@@ -15,7 +14,8 @@ def gerenciar_mensagens(mensagem):
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("homepage.html")
+
 
 if __name__ == "__main__":
     socketio.run(app, host='localhost')
