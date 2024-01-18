@@ -9,7 +9,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        $(document).ready(function {
+        $(document).ready(function() {
             var socket = io("localhost:5000")
             socket.on("connect", function() {
                 console.log("conectou");
@@ -35,6 +35,6 @@
     <input type="text" id="usuario" placeholder="Usuario" required>
     <input type="text" id="mensagem" placeholder="Mensagem" required>
     <button id="botao">Enviar</button>
-    
+
 </body>
 </html>
