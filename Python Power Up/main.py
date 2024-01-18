@@ -28,5 +28,5 @@ import pandas as pd
 import pyautogui
 import time
 
-tabela = pd.read_csv("produtos.csv")
+tabela = pd.read_csv(r"C:\Users\Danie\OneDrive\Documentos\MeusProjetos\Jornada-Python\Python Power Up\produtos.csv")
 print(tabela)
