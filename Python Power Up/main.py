@@ -76,3 +76,23 @@ pyautogui.press("enter")
 
 # Já logado no servidor, devemos fazer os mesmos procedimentos para selecionar a primeira entrada
 
+for linha in tabela.index:
+    pyautogui.click(x=652, y=368)
+    pyautogui.write(str(tabela.loc[linha, "codigo"]))
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha, "marca"]))
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha, "tipo"]))
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha, "categoria"]))
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha, "preco_unitario"]))
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha, "custo"]))
+    pyautogui.press("tab")
+
+    if not pd.isna(tabela.loc[linha, "obs"]): # Verifica se a linha não está vazia, se não estiver vai preencher
+        pyautogui.write(str(tabela.loc[linha, "obs"]))
+    pyautogui.press("tab")
+    pyautogui.press("enter")
+    pyautogui.scroll(500)
